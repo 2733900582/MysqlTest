@@ -1,0 +1,66 @@
+# 编译输出
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+*.class
+
+# 日志文件
+*.log
+logs/
+
+# IDE 文件
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 配置文件（如果包含敏感信息）
+# application-dev.yml
+# application-prod.yml
+
+# 其他
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# 虚拟环境
+.env
+.venv
+env/
+venv/
+ENV/
+
+# 本地配置
+application-local.yml
+application-local.properties
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
