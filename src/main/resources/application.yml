@@ -1,70 +1,19 @@
-# 方法1: 使用Spring Boot配置多数据源
 spring:
-  # 确保使用Spring Boot方式，不使用sharding-jdbc profile
-  profiles:
-    active: default
-  # 注释掉下面的shardingsphere配置，取消注释datasource配置，可以使用Spring Boot方式
-  datasource:
-    master:
-      url: jdbc:mysql://yuanbaocat.work:13306/repltest
-      username: root
-      password: masterpassword
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      hikari:
-        maximum-pool-size: 10
-        minimum-idle: 5
-        idle-timeout: 30000
-        connection-timeout: 30000
-        max-lifetime: 1800000
-    slave:
-      url: jdbc:mysql://yuanbaocat.work:13307/repltest
-      username: root
-      password: slavepassword
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      hikari:
-        maximum-pool-size: 10
-        minimum-idle: 5
-        idle-timeout: 30000
-        connection-timeout: 30000
-        max-lifetime: 1800000
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
 
-# 方法2: 使用Sharding-JDBC配置主从复制
-# 取消注释下面的配置，注释掉上面的datasource配置，可以使用Sharding-JDBC方式
-#  shardingsphere:
-#    datasource:
-#      names: master,slave
-#      master:
-#        type: com.zaxxer.hikari.HikariDataSource
-#        driver-class-name: com.mysql.cj.jdbc.Driver
-#        jdbc-url: jdbc:mysql://yuanbaocat.work:13306/repltest
-#        username: root
-#        password: masterpassword
-#      slave:
-#        type: com.zaxxer.hikari.HikariDataSource
-#        driver-class-name: com.mysql.cj.jdbc.Driver
-#        jdbc-url: jdbc:mysql://yuanbaocat.work:13307/repltest
-#        username: root
-#        password: slavepassword
-#    masterslave:
-#      name: ms
-#      master-data-source-name: master
-#      slave-data-source-names: slave
-#      load-balance-algorithm-type: round_robin
-#    props:
-#      sql.show: true
+# MinIO配置
+minio:
+  endpoint: http://yuanbaocat.work:9000  # 替换为您的MinIO服务器IP
+  accessKey: minioadmin
+  secretKey: minioadmin
+  bucketName: testbucket
+# 服务端口
+server:
+  port: 8888
 
-# JPA配置
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQL8Dialect
-
-# 日志配置
 logging:
   level:
-    com.example: DEBUG
-    org.springframework.jdbc.datasource: DEBUG
+    sql: debug

@@ -1,0 +1,13 @@
+
+POST http://localhost:8888/api/files/upload
+Accept: application/json
+Content-Type: multipart/form-data
+
+< /Users/huzhengyuan/Documents/coding/hzy/mysql-replication-demo/example.txt
+
+# ###
+
+# curl -X POST http://localhost:8888/api/files/upload -F "file=@/Users/huzhengyuan/Documents/coding/hzy/mysql-replication-demo/example.txt"
+
+###
+
